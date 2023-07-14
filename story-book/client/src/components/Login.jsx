@@ -40,7 +40,7 @@ const Login = () => {
           <span className="login-text">Story Books</span>
         </h2>
         <p className="login-description">
-          Create public and private stories about your life!
+          Make your stories!
         </p>
         <Link to="/home">
           <button className="login-button" onClick={handleLogin} disabled={isLoading}>

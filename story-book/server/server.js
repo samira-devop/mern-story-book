@@ -1,12 +1,10 @@
+// server/server.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-const data = require('./data');
-
-// Import your Mongoose model here
-const Book = require('./models/Book');
 
 dotenv.config();
 const app = express();
@@ -22,15 +20,9 @@ app.use(express.json());
 // Connect to MongoDB
 connectDB(async () => {
   try {
-    // Clear existing data
-    await Book.deleteMany();
-
-    // Insert new data
-    await Book.insertMany(data);
-
-    console.log('Database populated successfully');
+    console.log('MongoDB connected');
   } catch (error) {
-    console.error('Error populating database:', error);
+    console.error('MongoDB connection error:', error);
   }
 });
 
@@ -42,6 +34,11 @@ app.get('/', (req, res) => {
 // Define a route for the dashboard
 app.get('/dashboard', (req, res) => {
   res.send('This is the dashboard');
+});
+
+// Define a route for the home page
+app.get('/home', (req, res) => {
+  res.send('This is the home page');
 });
 
 // Define a route for the login

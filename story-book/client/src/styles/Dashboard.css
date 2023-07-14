@@ -1,34 +1,113 @@
 .dashboard-container {
-    text-align: center;
-  }
-  
-  .dashboard-container h1 {
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
-  
-  .dashboard-container nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .dashboard-container nav ul li {
-    margin-right: 16px;
-  }
-  
-  .dashboard-container nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 4px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .dashboard-container nav ul li a:hover {
-    background-color: #eee;
-  }
-  
+  text-align: center;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.categories-container {
+  margin-bottom: 32px;
+}
+
+.categories-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.category-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.category-item {
+  margin-right: 16px;
+}
+
+.category-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.category-link:hover {
+  background-color: #eee;
+}
+
+.books-container {
+  margin-bottom: 32px;
+}
+
+.books-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.book-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.book-item {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.book-image {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 16px;
+  border-radius: 4px;
+}
+
+.book-info {
+  text-align: left;
+}
+
+.book-title {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.book-author {
+  font-size: 14px;
+  color: #888;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
