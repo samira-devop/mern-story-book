@@ -31,19 +31,21 @@
 }
 
 .login-description {
-  font-size: 18px;
-  color: #fff;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #7f0ad8;
   margin-bottom: 32px;
 }
 
 .login-button {
   background-color: royalblue;
   border: none;
-  border-radius: 4px;
+  border-radius: 7px;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 55px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
   cursor: pointer;

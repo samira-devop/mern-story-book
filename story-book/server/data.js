@@ -9,32 +9,32 @@ const img5 = require('../images/img5.jpg'); // Replace with the correct image fi
 const data = [
   {
     _id: '1',
-    title: 'book 1',
+    title: 'Lion King',
     author: 'author 1',
     image: img1,
   },
   {
     _id: '2',
-    title: 'Book 2',
+    title: 'Little Kids',
     author: 'Author 2',
     image: img2,
   },
   {
     _id: '3',
-    title: 'Book 2',
-    author: 'Author 2',
+    title: 'Cinderella',
+    author: 'Author 3',
     image: img3,
   },
   {
     _id: '4',
-    title: 'Book 2',
-    author: 'Author 2',
+    title: 'Clifford',
+    author: 'Author 4',
     image: img4,
   },
   {
     _id: '5',
-    title: 'Book 2',
-    author: 'Author 2',
+    title: 'I Beleive I can',
+    author: 'Author 5',
     image: img5,
   },
 ];

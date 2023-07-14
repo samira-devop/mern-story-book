@@ -26,31 +26,31 @@ const Dashboard = () => {
       const bookData = [
         {
           _id: '1',
-          title: 'go photo',
-          author: 'Alice Proujansky',
+          title: 'Lion King',
+          author: 'author 1',
           image: require('../images/img1.jpg'), // Replace with the correct image file path
         },
         {
           _id: '2',
-          title: 'Book 2',
+          title: 'Little Kids',
           author: 'Author 2',
           image: require('../images/img2.jpg'), // Replace with the correct image file path
         },
         {
-          _id: '2',
-          title: 'Book 3',
+          _id: '3',
+          title: 'Cinderella',
           author: 'Author 3',
           image: require('../images/img3.jpg'), // Replace with the correct image file path
         },
         {
-          _id: '2',
-          title: 'Book 4',
+          _id: '4',
+          title: 'Clifford',
           author: 'Author 4',
           image: require('../images/img4.jpg'), // Replace with the correct image file path
         },
         {
-          _id: '2',
-          title: 'Book 5',
+          _id: '5',
+          title: 'I Beleive I can',
           author: 'Author 5',
           image: require('../images/img5.jpg'), // Replace with the correct image file path
         },
