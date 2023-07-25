@@ -1,10 +1,13 @@
+/* New styles for Dashboard */
 .dashboard-container {
   text-align: center;
+  padding: 20px;
 }
 
 .dashboard-title {
-  font-size: 24px;
+  font-size: 36px;
   margin-bottom: 16px;
+  color: royalblue;
 }
 
 .categories-container {
@@ -21,7 +24,6 @@
   padding: 0;
   display: flex;
   justify-content: center;
-  margin-top: 16px;
 }
 
 .category-item {
@@ -30,9 +32,9 @@
 
 .category-link {
   text-decoration: none;
-  color: #333;
+  color: royalblue;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   padding: 4px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
@@ -41,6 +43,8 @@
 .category-link:hover {
   background-color: #eee;
 }
+
+/* Existing code... */
 
 .books-container {
   margin-bottom: 32px;
@@ -69,6 +73,41 @@
   align-items: center;
 }
 
+/* New styles for BookForm */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type='submit'] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background-color: #0056b3;
+}
+
+/* New styles for BookItem */
 .book-details {
   display: flex;
   align-items: center;

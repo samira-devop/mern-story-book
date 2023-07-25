@@ -1,5 +1,3 @@
-// server/models/Book.js
-
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
@@ -15,7 +13,10 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // Add more fields as needed
+  image: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('Book', bookSchema);

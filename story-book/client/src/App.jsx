@@ -1,9 +1,8 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useEffect } from 'react';
-import Dashboard from './components/Dashboard'
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes
+import Dashboard from './components/Dashboard';
 import Home from './components/Home';
-import Login from './components/Login'
+import Login from './components/Login';
 
 const App = () => {
   useEffect(() => {
@@ -20,14 +19,14 @@ const App = () => {
   return (
     <div className="App bg-gray-100">
       <Router>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/home" element={<Home />} />
+        <Routes> {/* Use Routes instead of Router */}
+          <Route path="/" element={<Login />} /> {/* Use element prop instead of exact */}
+          <Route path="/dashboard" element={<Dashboard />} /> {/* Use element prop instead of exact */}
+          <Route path="/home" element={<Home />} /> {/* Use element prop instead of exact */}
         </Routes>
       </Router>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

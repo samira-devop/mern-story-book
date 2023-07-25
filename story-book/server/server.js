@@ -1,65 +1,41 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const morgan = require('morgan');
-const connectDB = require('./config/db');
+const cors = require('cors');
+require('dotenv').config();
+const path = require('path');
 
-dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 8000;
 
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
-
-// Body parser middleware
+// Middleware
+app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-connectDB(async () => {
-  try {
-    mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+const uri = process.env.MONGO_URI;
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err.message);
+    process.exit(1); // Exit with error code 1
+  });
 
-    mongoose.connection.on('connected', () => {
-      console.log('MongoDB connected');
-    });
+// Routes
+app.use('/api/login', require('./routes/login'));
+app.use('/api/dashboard', require('./routes/dashboard'));
 
-    mongoose.connection.on('error', (error) => {
-      console.error('MongoDB connection error:', error);
-    });
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-  }
-});
+// Serve frontend files from the build directory
+app.use(express.static(path.join(__dirname, '../client/build')));
 
-// Define a route for the root URL
-app.get('/', (req, res) => {
-  res.send('Welcome to the Story Book app!');
-});
-
-// Define a route for the dashboard
-app.get('/dashboard', (req, res) => {
-  res.send('This is the dashboard');
-});
-
-// Define a route for the home page
-app.get('/home', (req, res) => {
-  res.send('This is the home page');
-});
-
-// Define a route for the login
-app.post('/login', (req, res) => {
-  // Handle login logic here
-  // Access login data from req.body
-
-  // Example response for successful login
-  res.status(200).json({ message: 'Login successful' });
+// Handle requests to your React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 // Start the server
-app.listen(PORT, () =>
-  console.log(`Server running in ${process.env.NODE_ENV} mode at http://localhost:${PORT}`)
-);
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
