@@ -22,9 +22,26 @@ mongoose
     process.exit(1); // Exit with error code 1
   });
 
+// Book Model
+const Book = require('./models/Book'); // Assuming you have defined the Book model
+
 // Routes
 app.use('/api/login', require('./routes/login'));
 app.use('/api/dashboard', require('./routes/dashboard'));
+
+// DELETE a book by title
+app.delete('/api/dashboard/books/:title', async (req, res) => {
+  const { title } = req.params;
+
+  try {
+    // Find the book by title and delete it
+    await Book.findOneAndDelete({ title });
+    res.sendStatus(204); // No Content (success status code)
+  } catch (error) {
+    console.error('Error deleting book:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 // Serve frontend files from the build directory
 app.use(express.static(path.join(__dirname, '../client/build')));

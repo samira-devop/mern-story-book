@@ -29,9 +29,47 @@ const Dashboard = () => {
     try {
       const response = await fetch(`${backendURL}/api/dashboard/books`);
       const data = await response.json();
-      setBooks(data);
+      const booksWithImageURL = data.map((book) => ({
+        ...book,
+        image: `${backendURL}/${book.image}`, // Assuming the image field in the book data contains the image filename, adjust this accordingly
+      }));
+      setBooks(booksWithImageURL);
     } catch (error) {
       console.error('Error fetching books:', error);
+    }
+  };
+
+  const handleDeleteBook = async (title) => {
+    try {
+      // Assuming you have a delete book API endpoint in your backend
+      await fetch(`${backendURL}/api/dashboard/books/${encodeURIComponent(title)}`, {
+        method: 'DELETE',
+      });
+      // After deletion, update the books state by filtering out the deleted book
+      setBooks((prevBooks) => prevBooks.filter((book) => book.title !== title));
+    } catch (error) {
+      console.error('Error deleting book:', error);
+    }
+  };
+
+  const handleAddBook = async (newBook) => {
+    try {
+      // Assuming you have an add book API endpoint in your backend
+      const response = await fetch(`${backendURL}/api/dashboard/books`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBook),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to add book');
+      }
+      // After adding the book, fetch the updated book list
+      fetchBooks();
+      setIsAddingBook(false); // Hide the book form after successful submission
+    } catch (error) {
+      console.error('Error adding book:', error);
     }
   };
 
@@ -56,8 +94,9 @@ const Dashboard = () => {
         <button className="add-button" onClick={() => setIsAddingBook(true)}>
           Add New Book
         </button>
-        {isAddingBook && <BookForm onSubmit={() => setIsAddingBook(false)} />}
+        {isAddingBook && <BookForm onSubmit={handleAddBook} categories={categories} />}
         <BookList books={books}>
+          {/* Custom rendering function */}
           {(book) => (
             <BookItem
               key={book._id}
@@ -65,6 +104,8 @@ const Dashboard = () => {
               author={book.author}
               description={book.description}
               image={book.image}
+              url={book.url} // Pass the book URL as a prop
+              onDelete={handleDeleteBook} // Pass the delete function
             />
           )}
         </BookList>

@@ -49,15 +49,16 @@ router.put('/books/:id', async (req, res) => {
   }
 });
 
-// Delete a book
-router.delete('/books/:id', async (req, res) => {
+// Delete a book by title
+router.delete('/books/:title', async (req, res) => {
+  const { title } = req.params;
+
   try {
-    const book = await Book.findByIdAndDelete(req.params.id);
-    if (!book) {
-      return res.status(404).json({ error: 'Book not found' });
-    }
-    res.status(200).json({ message: 'Book deleted successfully' });
+    // Find the book by title and delete it
+    await Book.findOneAndDelete({ title });
+    res.status(204).end(); // No Content (success status code)
   } catch (error) {
+    console.error('Error deleting book:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

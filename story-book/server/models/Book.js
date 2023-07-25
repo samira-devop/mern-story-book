@@ -1,3 +1,5 @@
+// models/Book.js
+
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
@@ -9,12 +11,8 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
+  url: {
+    type: String, // Add the "url" field for the book URL
     required: true,
   },
 });
