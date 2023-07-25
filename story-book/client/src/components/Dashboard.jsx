@@ -31,7 +31,7 @@ const Dashboard = () => {
       const data = await response.json();
       const booksWithImageURL = data.map((book) => ({
         ...book,
-        image: `${backendURL}/${book.image}`, // Assuming the image field in the book data contains the image filename, adjust this accordingly
+        image: book.url, // Assuming the book data contains the URL field for the image
       }));
       setBooks(booksWithImageURL);
     } catch (error) {
